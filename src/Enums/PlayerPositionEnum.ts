@@ -1,0 +1,7 @@
+export enum PlayerPositionEnum {
+  STRIKER = 'STRIKER',
+  DEFENDER = 'DEFENDER',
+  GOALKEEPER = 'GOALKEEPER',
+  FULLBACK = 'FULL-BACK',
+  MIDFIELD = 'MIDFIELD'
+}
