@@ -1,6 +1,7 @@
 import { IRepository } from '../Interfaces/IRepositotyInterface'
 import { Repository as TypeOrmRepository, SelectQueryBuilder } from 'typeorm'
 import { IEntityDataMapperInterface } from '../Interfaces/IEntityDataMapperInterface'
+import { DataNotFoundError } from '../Entities/Errors'
 
 export abstract class TypeOrmMysqlRepositoryContract<TDomainEntity, TDaoEntity>
   implements IRepository<TDomainEntity>
@@ -10,10 +11,13 @@ export abstract class TypeOrmMysqlRepositoryContract<TDomainEntity, TDaoEntity>
 
   public constructor(
     repository: TypeOrmRepository<TDaoEntity>,
-    dataMapper: IEntityDataMapperInterface<TDomainEntity, TDaoEntity>
+    dataMapper: IEntityDataMapperInterface<TDomainEntity, TDaoEntity>,
+    protected dataNotFoundError?: DataNotFoundError
   ) {
     this.repository = repository
     this.dataMapper = dataMapper
+
+    if (!this.dataNotFoundError) this.dataNotFoundError = new DataNotFoundError()
   }
 
   public async getAll<TFilter = any>(filter?: TFilter): Promise<TDomainEntity[]> {
@@ -29,7 +33,7 @@ export abstract class TypeOrmMysqlRepositoryContract<TDomainEntity, TDaoEntity>
 
     const entity = await query.getOne()
 
-    if (!entity) throw new Error()
+    if (!entity) throw this.dataNotFoundError
 
     return this.dataMapper.toDomainEntity(entity)
   }

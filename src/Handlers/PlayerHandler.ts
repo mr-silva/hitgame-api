@@ -12,7 +12,7 @@ export class PlayerHandler {
         .buildPlayerFacade()
         .getOneById(req.params.id)
 
-      return res.json(new PlayerView().render(result))
+      res.status(200).send(new PlayerView().render(result))
     } catch (e) {
       console.error(e)
       next(e)
@@ -25,7 +25,7 @@ export class PlayerHandler {
 
       const result = await factory.buildFacadeFactory().buildPlayerFacade().post(req.body)
 
-      return res.json(new PlayerView().render(result))
+      res.status(201).send(new PlayerView().render(result))
     } catch (e) {
       console.error(e)
       next(e)

@@ -15,7 +15,7 @@ export class TeamDataMapperMediator extends EntityDataMapperContract<Team, TeamE
   toDomainEntity(daoEntity: TeamEntity): Team {
     const team = this.teamDataMapper.toDomainEntity(daoEntity)
 
-    if (daoEntity.players.length) {
+    if (daoEntity.players?.length) {
       const players = this.playerDataMapper.toDomainEntityMany(daoEntity.players)
 
       players.forEach(player => team.addPlayer(player))
@@ -27,7 +27,7 @@ export class TeamDataMapperMediator extends EntityDataMapperContract<Team, TeamE
   toDaoEntity(domainEntity: Team): TeamEntity {
     const team = this.teamDataMapper.toDaoEntity(domainEntity)
 
-    if (domainEntity.getPlayers().length) {
+    if (domainEntity.getPlayers()?.length) {
       const players = this.playerDataMapper.toDaoEntityMany(domainEntity.getPlayers())
 
       players.forEach(player => team.addPlayer(player))

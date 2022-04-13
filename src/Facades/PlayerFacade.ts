@@ -3,6 +3,7 @@ import { IPlayerCreateDto } from '../Entities/Dto/IPlayerCreateDto'
 import { RepositoryFactory } from '../Factories/RepositoryFactory'
 import { PlayerCreateUseCase } from '../UseCases/PlayerCreateUseCase'
 import { PlayerGetUseCase } from '../UseCases/PlayerGetUseCase'
+import { TeamGetUseCase } from '../UseCases/TeamGetUseCase'
 import { PlayerValidator } from '../Validators/PlayerValidator'
 
 export class PlayerFacade {
@@ -17,7 +18,7 @@ export class PlayerFacade {
   public async post(payload: IPlayerCreateDto): Promise<Player> {
     const playerCreateUseCase = new PlayerCreateUseCase(
       this.repositoryFactory.buildPlayerRepository(),
-      null,
+      new TeamGetUseCase(this.repositoryFactory.buildTeamRepository()),
       new PlayerValidator()
     )
 
