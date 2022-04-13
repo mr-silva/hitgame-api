@@ -23,9 +23,9 @@ export class PlayerEntity {
   weight: number
 
   @ManyToOne(() => TeamEntity, team => team.players, {
-    orphanedRowAction: 'delete',
-    onDelete: 'CASCADE',
-    onUpdate: 'CASCADE'
+    orphanedRowAction: 'nullify',
+    onDelete: 'SET NULL',
+    onUpdate: 'NO ACTION'
   })
   @JoinColumn({
     name: 'team_id'

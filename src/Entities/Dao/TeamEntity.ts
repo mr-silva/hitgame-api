@@ -21,9 +21,7 @@ export class TeamEntity {
   })
   state: StateEnum
 
-  @OneToMany(() => PlayerEntity, player => player.team, {
-    orphanedRowAction: 'delete'
-  })
+  @OneToMany(() => PlayerEntity, player => player.team)
   @JoinColumn({
     name: 'team_id'
   })
