@@ -1,6 +1,6 @@
-import { IRepositoryInterface } from '../../Adapters/Interfaces/IRepositotyInterface'
 import { PlayerAlreadyHasTeamError } from '../../Business/Entities/Domain/Errors/PlayerAlreadyHasTeamError'
 import { Player } from '../../Business/Entities/Domain/Player'
+import { IRepositoryInterface } from '../Interfaces/IRepositotyInterface'
 import { TeamGetUseCase } from './TeamGetUseCase'
 
 export class PlayerAssignTeamUseCase {

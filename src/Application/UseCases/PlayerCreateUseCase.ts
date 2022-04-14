@@ -1,8 +1,7 @@
-import { IRepositoryInterface } from '../../Adapters/Interfaces/IRepositotyInterface'
-import { IValidatorInterface } from '../../Adapters/Interfaces/IValidatorInterface'
-import { PlayerValidator } from '../../Adapters/Validators/PlayerValidator'
 import { Player } from '../../Business/Entities/Domain/Player'
 import { IPlayerCreateDto } from '../Dto/IPlayerCreateDto'
+import { IRepositoryInterface } from '../Interfaces/IRepositotyInterface'
+import { IValidatorInterface } from '../Interfaces/IValidatorInterface'
 
 export class PlayerCreateUseCase {
   constructor(

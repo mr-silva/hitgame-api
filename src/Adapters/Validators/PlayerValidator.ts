@@ -1,8 +1,8 @@
 import * as Joi from 'joi'
 import { Schema } from 'joi'
-import { JoiSchemaValidatorContract } from '../../Application/Contracts/JoiSchemaValidatorContract'
 import { IPlayerCreateDto } from '../../Application/Dto/IPlayerCreateDto'
 import { PlayerPositionEnum } from '../../Business/Enums/PlayerPositionEnum'
+import { JoiSchemaValidatorContract } from '../Contracts/JoiSchemaValidatorContract'
 
 export class PlayerValidator extends JoiSchemaValidatorContract {
   private playerCreateSchema: Schema

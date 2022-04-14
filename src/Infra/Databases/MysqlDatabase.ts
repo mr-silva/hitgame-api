@@ -1,6 +1,6 @@
 import * as path from 'path'
 import { DataSource } from 'typeorm'
-import { IDatabaseInterface } from '../../Adapters/Interfaces/IDatabaseInterface'
+import { IDatabaseInterface } from '../Interfaces/IDatabaseInterface'
 
 export class MysqlDatabase implements IDatabaseInterface {
   private static connection: DataSource

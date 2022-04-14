@@ -1,5 +1,5 @@
-import { IRepositoryInterface } from '../../Adapters/Interfaces/IRepositotyInterface'
 import { Player } from '../../Business/Entities/Domain/Player'
+import { IRepositoryInterface } from '../Interfaces/IRepositotyInterface'
 
 export class PlayerRemoveTeamUseCase {
   constructor(private readonly playerRepository: IRepositoryInterface<Player>) {}

@@ -1,6 +1,6 @@
 import { Schema, ValidationError } from 'joi'
 import { InvalidDataError } from '../../Business/Errors'
-import { IErrorDetail } from '../Interfaces/IErrorDetail'
+import { IErrorDetail } from '../../Business/Interfaces/IErrorDetail'
 
 export abstract class JoiSchemaValidatorContract {
   /**

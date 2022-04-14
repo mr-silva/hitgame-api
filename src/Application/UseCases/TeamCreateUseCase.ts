@@ -1,8 +1,7 @@
-import { IRepositoryInterface } from '../../Adapters/Interfaces/IRepositotyInterface'
-import { IValidatorInterface } from '../../Adapters/Interfaces/IValidatorInterface'
-import { TeamValidator } from '../../Adapters/Validators/TeamValidator'
 import { Team } from '../../Business/Entities/Domain/Team'
 import { ITeamCreateDto } from '../Dto/ITeamCreateDto'
+import { IRepositoryInterface } from '../Interfaces/IRepositotyInterface'
+import { IValidatorInterface } from '../Interfaces/IValidatorInterface'
 
 export class TeamCreateUseCase {
   constructor(

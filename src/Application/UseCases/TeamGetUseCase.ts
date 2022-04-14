@@ -1,5 +1,5 @@
-import { IRepositoryInterface } from '../../Adapters/Interfaces/IRepositotyInterface'
 import { Team } from '../../Business/Entities/Domain/Team'
+import { IRepositoryInterface } from '../Interfaces/IRepositotyInterface'
 
 export class TeamGetUseCase {
   constructor(private readonly teamRepository: IRepositoryInterface<Team>) {}

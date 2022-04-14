@@ -1,8 +1,8 @@
 import * as Joi from 'joi'
 import { Schema } from 'joi'
-import { JoiSchemaValidatorContract } from '../../Application/Contracts/JoiSchemaValidatorContract'
 import { ITeamCreateDto } from '../../Application/Dto/ITeamCreateDto'
 import { StateEnum } from '../../Business/Enums/StateEnum'
+import { JoiSchemaValidatorContract } from '../Contracts/JoiSchemaValidatorContract'
 
 export class TeamValidator extends JoiSchemaValidatorContract {
   private teamCreateUseCase: Schema
