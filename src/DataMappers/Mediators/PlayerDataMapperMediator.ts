@@ -23,8 +23,9 @@ export class PlayerDataMapperMediator extends EntityDataMapperContract<Player, P
   toDaoEntity(domainEntity: Player): PlayerEntity {
     const player = this.playerDataMapper.toDaoEntity(domainEntity)
 
-    if (domainEntity.getTeam())
-      player.team = this.teamDataMapper.toDaoEntity(domainEntity.getTeam())
+    player.team = domainEntity?.getTeam()
+      ? this.teamDataMapper.toDaoEntity(domainEntity.getTeam())
+      : null
 
     return player
   }

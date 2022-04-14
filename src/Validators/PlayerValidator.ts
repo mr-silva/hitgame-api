@@ -16,8 +16,7 @@ export class PlayerValidator extends JoiSchemaValidatorContract {
         .valid(...Object.keys(PlayerPositionEnum))
         .required(),
       height: Joi.number().min(1.4).max(2.5).required(),
-      weight: Joi.number().min(30).max(170).required(),
-      teamId: Joi.string().allow(null)
+      weight: Joi.number().min(30).max(170).required()
     })
   }
 

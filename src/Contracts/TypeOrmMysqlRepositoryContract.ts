@@ -43,6 +43,8 @@ export abstract class TypeOrmMysqlRepositoryContract<TDomainEntity, TDaoEntity>
   }
 
   public async save(entity: TDomainEntity): Promise<TDomainEntity> {
+    console.log(this.dataMapper.toDaoEntity(entity))
+
     const result = await this.repository.save(this.dataMapper.toDaoEntity(entity))
 
     return this.dataMapper.toDomainEntity(result)

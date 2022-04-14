@@ -5,5 +5,4 @@ export interface IPlayerCreateDto {
   position: PlayerPositionEnum
   height: number
   weight: number
-  teamId?: string
 }

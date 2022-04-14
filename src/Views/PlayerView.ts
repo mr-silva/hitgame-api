@@ -4,13 +4,19 @@ import { PlayerPositionEnum } from '../Enums/PlayerPositionEnum'
 import { StateEnum } from '../Enums/StateEnum'
 
 export class PlayerView extends ViewContract<Player, IPlayerView> {
-  render(entity: Player): IPlayerView {
-    return {
+  render(entity: Player, detailedView: boolean = true): IPlayerView {
+    const playerView: IPlayerView = {
       id: entity.getId(),
       name: entity.getName(),
       position: entity.getPosition(),
       height: entity.getHeight(),
-      weight: entity.getWeight(),
+      weight: entity.getWeight()
+    }
+
+    if (!detailedView) return playerView
+
+    return {
+      ...playerView,
       hasTeam: !!entity.getTeam(),
       team: !!entity.getTeam()
         ? {
@@ -23,13 +29,13 @@ export class PlayerView extends ViewContract<Player, IPlayerView> {
   }
 }
 
-interface IPlayerView {
+export interface IPlayerView {
   id: string
   name: string
   position: PlayerPositionEnum
   height: number
   weight: number
-  hasTeam: boolean
+  hasTeam?: boolean
   team?: {
     id: string
     name: string

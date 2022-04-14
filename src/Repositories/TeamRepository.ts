@@ -1,4 +1,4 @@
-import { DataSource } from 'typeorm'
+import { DataSource, SelectQueryBuilder } from 'typeorm'
 import { TypeOrmMysqlRepositoryContract } from '../Contracts/TypeOrmMysqlRepositoryContract'
 import { TeamEntity } from '../Entities/Dao/TeamEntity'
 import { Team } from '../Entities/Domain/Team'
@@ -16,5 +16,15 @@ export class TeamRepository extends TypeOrmMysqlRepositoryContract<Team, TeamEnt
       dataMapper.buildTeamDataMapperMediator(),
       dataNotFoundError
     )
+  }
+
+  protected customToGetOneById(
+    query: SelectQueryBuilder<TeamEntity>
+  ): SelectQueryBuilder<TeamEntity> {
+    return this.customJoin(query)
+  }
+
+  private customJoin(query: SelectQueryBuilder<TeamEntity>): SelectQueryBuilder<TeamEntity> {
+    return query.leftJoinAndSelect('TeamEntity.players', 'players')
   }
 }

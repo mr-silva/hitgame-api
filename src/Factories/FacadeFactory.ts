@@ -1,4 +1,5 @@
 import { PlayerFacade } from '../Facades/PlayerFacade'
+import { TeamFacade } from '../Facades/TeamFacade'
 import { RepositoryFactory } from './RepositoryFactory'
 
 export class FacadeFactory {
@@ -6,5 +7,9 @@ export class FacadeFactory {
 
   public buildPlayerFacade() {
     return new PlayerFacade(this.repositoryFactory)
+  }
+
+  public buildTeamFacade() {
+    return new TeamFacade(this.repositoryFactory)
   }
 }
