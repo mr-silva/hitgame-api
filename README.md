@@ -23,6 +23,8 @@ ou
 foo@bar:~$ yarn dev
 ```
 
+:warning: É necessário executar a migration que está na pasta `resources/migrations/V1.0__initial.sql` para criar o banco de dados.
+
 ### Rotas da aplicação
 
 Abaixo uma breve explicação de como utilizar as rotas disponíveis na aplicação:
