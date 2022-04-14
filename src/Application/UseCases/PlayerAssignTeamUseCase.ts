@@ -9,7 +9,7 @@ export class PlayerAssignTeamUseCase {
     private readonly teamGetUseCase: TeamGetUseCase
   ) {}
 
-  public async execute(id: string, teamId: string): Promise<void> {
+  public async execute(id: string, teamId: string): Promise<Player> {
     const player = await this.playerRepository.getOneById(id)
 
     const team = await this.teamGetUseCase.execute(teamId)
@@ -19,6 +19,6 @@ export class PlayerAssignTeamUseCase {
 
     player.setTeam(team)
 
-    await this.playerRepository.save(player)
+    return this.playerRepository.save(player)
   }
 }

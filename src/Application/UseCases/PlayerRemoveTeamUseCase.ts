@@ -4,11 +4,11 @@ import { IRepositoryInterface } from '../Interfaces/IRepositotyInterface'
 export class PlayerRemoveTeamUseCase {
   constructor(private readonly playerRepository: IRepositoryInterface<Player>) {}
 
-  public async execute(id: string): Promise<void> {
+  public async execute(id: string): Promise<Player> {
     const player = await this.playerRepository.getOneById(id)
 
     player.setTeam(null)
 
-    await this.playerRepository.save(player)
+    return this.playerRepository.save(player)
   }
 }

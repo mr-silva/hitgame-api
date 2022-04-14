@@ -26,20 +26,20 @@ export class PlayerFacade {
     return playerCreateUseCase.execute(payload)
   }
 
-  public async assignTeam(id: string, teamId: string): Promise<void> {
+  public async assignTeam(id: string, teamId: string): Promise<Player> {
     const playerAssignTeamUseCase = new PlayerAssignTeamUseCase(
       this.repositoryFactory.buildPlayerRepository(),
       new TeamGetUseCase(this.repositoryFactory.buildTeamRepository())
     )
 
-    await playerAssignTeamUseCase.execute(id, teamId)
+    return playerAssignTeamUseCase.execute(id, teamId)
   }
 
-  public async removeTeam(id: string): Promise<void> {
+  public async removeTeam(id: string): Promise<Player> {
     const playerRemoveTeamUseCase = new PlayerRemoveTeamUseCase(
       this.repositoryFactory.buildPlayerRepository()
     )
 
-    await playerRemoveTeamUseCase.execute(id)
+    return playerRemoveTeamUseCase.execute(id)
   }
 }

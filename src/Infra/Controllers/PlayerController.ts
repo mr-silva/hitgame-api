@@ -42,7 +42,7 @@ export class PlayerController {
         .buildPlayerFacade()
         .assignTeam(request.params.id, request.params.teamId)
 
-      response.status(204).send(result)
+      response.status(200).send(new PlayerView().render(result))
     } catch (e) {
       console.error(e)
       next(e)
@@ -58,7 +58,7 @@ export class PlayerController {
         .buildPlayerFacade()
         .removeTeam(request.params.id)
 
-      response.status(204).send(result)
+      response.status(200).send(new PlayerView().render(result))
     } catch (e) {
       console.error(e)
       next(e)

@@ -40,7 +40,6 @@ export interface IRepositoryInterface<TDomainEntity> {
    * Cria ou atualiza um registro com base na entidade.
    *
    * @param {TDomainEntity} entity
-   * @param {{} | string} conditions
    *
    * @returns {Promise<TDomainEntity>}
    */
