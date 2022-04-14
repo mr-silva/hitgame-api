@@ -18,6 +18,10 @@ export class TeamRepository extends TypeOrmMysqlRepositoryContract<Team, TeamEnt
     )
   }
 
+  protected customToGetAll(query: SelectQueryBuilder<TeamEntity>): SelectQueryBuilder<TeamEntity> {
+    return this.customJoin(query)
+  }
+
   protected customToGetOneById(
     query: SelectQueryBuilder<TeamEntity>
   ): SelectQueryBuilder<TeamEntity> {

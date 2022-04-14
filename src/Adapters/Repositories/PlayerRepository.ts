@@ -18,6 +18,12 @@ export class PlayerRepository extends TypeOrmMysqlRepositoryContract<Player, Pla
     )
   }
 
+  protected customToGetAll(
+    query: SelectQueryBuilder<PlayerEntity>
+  ): SelectQueryBuilder<PlayerEntity> {
+    return this.customJoin(query)
+  }
+
   protected customToGetOneById(
     query: SelectQueryBuilder<PlayerEntity>
   ): SelectQueryBuilder<PlayerEntity> {
