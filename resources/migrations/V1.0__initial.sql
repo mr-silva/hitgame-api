@@ -5,9 +5,9 @@ CREATE SCHEMA IF NOT EXISTS `hitgame-api` ;
 USE `hitgame-api` ;
 
 -- -----------------------------------------------------
--- Table `hitgame-api`.`team`
+-- Table `team`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `hitgame-api`.`team` (
+CREATE TABLE IF NOT EXISTS `team` (
   `id` CHAR(36) NOT NULL,
   `name` VARCHAR(200) NOT NULL,
   `openning_date` DATETIME NOT NULL,
@@ -17,9 +17,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `hitgame-api`.`player`
+-- Table `player`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `hitgame-api`.`player` (
+CREATE TABLE IF NOT EXISTS `player` (
   `id` CHAR(36) NOT NULL,
   `name` VARCHAR(200) NOT NULL,
   `position` ENUM('STRIKER', 'DEFENDER', 'GOALKEEPER', 'FULLBACK', 'MIDFIELD') NOT NULL,
