@@ -1,6 +1,6 @@
 import * as dotenv from 'dotenv'
 import { app } from './app'
-import { MysqlDatabase } from './Databases/MysqlDatabase'
+import { MysqlDatabase } from './Infra/Databases/MysqlDatabase'
 
 dotenv.config()
 
