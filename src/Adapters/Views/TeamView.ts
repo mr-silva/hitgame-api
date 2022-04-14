@@ -1,6 +1,6 @@
-import { ViewContract } from '../../Adapters/Contracts/ViewContract'
-import { StateEnum } from '../../Adapters/Entities/Enums/StateEnum'
 import { Team } from '../../Business/Entities/Domain/Team'
+import { StateEnum } from '../../Business/Enums/StateEnum'
+import { ViewContract } from '../Contracts/ViewContract'
 import { IPlayerView, PlayerView } from './PlayerView'
 
 export class TeamView extends ViewContract<Team, ITeamView> {
@@ -10,7 +10,8 @@ export class TeamView extends ViewContract<Team, ITeamView> {
       name: entity.getName(),
       openningDate: entity.getOpenningDate(),
       state: entity.getState(),
-      playerRoster: entity.getPlayers()?.length
+      numberOfPlayers: entity.getPlayers()?.length || 0,
+      roster: entity.getPlayers()?.length
         ? new PlayerView().renderMany(entity.getPlayers(), false)
         : []
     }
@@ -22,5 +23,6 @@ export interface ITeamView {
   name: string
   openningDate: Date
   state: StateEnum
-  playerRoster: IPlayerView[]
+  numberOfPlayers: number
+  roster: IPlayerView[]
 }

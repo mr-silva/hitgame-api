@@ -1,16 +1,17 @@
 import { Router } from 'express'
-import { PlayerHandler } from '../Handlers/PlayerHandler'
-import { PlayerPositionEnum } from '../../Business/Enums/PlayerPositionEnum'
+import { PlayerController } from '../Controllers/PlayerController'
 
 const playerRouter = Router()
-const playerHandler = new PlayerHandler()
+const playerController = new PlayerController()
 
-playerRouter.get('/:id', playerHandler.get)
+playerRouter.route('/:id').get(playerController.get.bind(playerController))
 
-playerRouter.post('/', playerHandler.post)
+playerRouter.route('/').post(playerController.post.bind(playerController))
 
-playerRouter.put('/:id/assign-team/:teamId', playerHandler.assignTeam)
+playerRouter
+  .route('/:id/assign-team/:teamId')
+  .put(playerController.assignTeam.bind(playerController))
 
-playerRouter.put('/:id/remove-team', playerHandler.removeTeam)
+playerRouter.route('/:id/remove-team').put(playerController.removeTeam.bind(playerController))
 
 export { playerRouter }

@@ -1,13 +1,11 @@
-import * as Joi from 'joi'
 import { Router } from 'express'
-import { StateEnum } from '../../Business/Enums/StateEnum'
-import { TeamHandler } from '../Handlers/TeamHandler'
+import { TeamController } from '../Controllers/TeamController'
 
 const teamRouter = Router()
-const teamHandler = new TeamHandler()
+const teamController = new TeamController()
 
-teamRouter.get('/:id', teamHandler.get)
+teamRouter.route('/:id').get(teamController.get.bind(teamController))
 
-teamRouter.post('/', teamHandler.post)
+teamRouter.route('/').post(teamController.post.bind(teamController))
 
 export { teamRouter }

@@ -2,11 +2,6 @@ import { NextFunction, Request, Response } from 'express'
 import { AlreadyExistsError, DataNotFoundError, InvalidDataError } from '../../Business/Errors'
 
 export class ErrorHandler {
-  public constructor() {
-    this.notFound = this.notFound.bind(this)
-    this.error = this.error.bind(this)
-  }
-
   public notFound(request: Request, response: Response, next: NextFunction) {
     return this.error(
       new DataNotFoundError('Resource not found.').setCode('resourceNotFound'),

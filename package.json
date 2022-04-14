@@ -5,7 +5,8 @@
   "author": "Maicon R. Silva <maiconrods@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "tsnd --transpile-only --respawn src/server.ts"
+    "dev": "tsnd --transpile-only --respawn src/server.ts",
+    "build": "tsc"
   },
   "dependencies": {
     "cors": "^2.8.5",

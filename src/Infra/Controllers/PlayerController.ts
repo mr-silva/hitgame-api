@@ -1,11 +1,12 @@
 import { Request, Response, NextFunction } from 'express'
 import { Factory } from '../../Adapters/Factories/Factory'
-import { PlayerView } from '../Views/PlayerView'
+import { PlayerView } from '../../Adapters/Views/PlayerView'
+import { MysqlDatabase } from '../Databases/MysqlDatabase'
 
-export class PlayerHandler {
+export class PlayerController {
   public async get(request: Request, response: Response, next: NextFunction) {
     try {
-      const factory = new Factory()
+      const factory = new Factory(MysqlDatabase.getConnection())
 
       const result = await factory
         .buildFacadeFactory()
@@ -21,7 +22,7 @@ export class PlayerHandler {
 
   public async post(request: Request, response: Response, next: NextFunction) {
     try {
-      const factory = new Factory()
+      const factory = new Factory(MysqlDatabase.getConnection())
 
       const result = await factory.buildFacadeFactory().buildPlayerFacade().create(request.body)
 
@@ -34,7 +35,7 @@ export class PlayerHandler {
 
   public async assignTeam(request: Request, response: Response, next: NextFunction) {
     try {
-      const factory = new Factory()
+      const factory = new Factory(MysqlDatabase.getConnection())
 
       const result = await factory
         .buildFacadeFactory()
@@ -50,7 +51,7 @@ export class PlayerHandler {
 
   public async removeTeam(request: Request, response: Response, next: NextFunction) {
     try {
-      const factory = new Factory()
+      const factory = new Factory(MysqlDatabase.getConnection())
 
       const result = await factory
         .buildFacadeFactory()

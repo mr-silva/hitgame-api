@@ -1,7 +1,7 @@
-import { ViewContract } from "../../Adapters/Contracts/ViewContract"
-import { PlayerPositionEnum } from "../../Adapters/Entities/Enums/PlayerPositionEnum"
-import { StateEnum } from "../../Adapters/Entities/Enums/StateEnum"
-import { Player } from "../../Business/Entities/Domain/Player"
+import { Player } from '../../Business/Entities/Domain/Player'
+import { PlayerPositionEnum } from '../../Business/Enums/PlayerPositionEnum'
+import { StateEnum } from '../../Business/Enums/StateEnum'
+import { ViewContract } from '../Contracts/ViewContract'
 
 export class PlayerView extends ViewContract<Player, IPlayerView> {
   render(entity: Player, detailedView: boolean = true): IPlayerView {

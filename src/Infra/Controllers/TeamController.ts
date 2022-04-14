@@ -1,11 +1,12 @@
 import { Request, Response, NextFunction } from 'express'
 import { Factory } from '../../Adapters/Factories/Factory'
-import { TeamView } from '../Views/TeamView'
+import { TeamView } from '../../Adapters/Views/TeamView'
+import { MysqlDatabase } from '../Databases/MysqlDatabase'
 
-export class TeamHandler {
+export class TeamController {
   public async get(request: Request, response: Response, next: NextFunction) {
     try {
-      const factory = new Factory()
+      const factory = new Factory(MysqlDatabase.getConnection())
 
       const result = await factory
         .buildFacadeFactory()
@@ -21,7 +22,7 @@ export class TeamHandler {
 
   public async post(request: Request, response: Response, next: NextFunction) {
     try {
-      const factory = new Factory()
+      const factory = new Factory(MysqlDatabase.getConnection())
 
       const result = await factory.buildFacadeFactory().buildTeamFacade().create(request.body)
 

@@ -1,17 +1,17 @@
-import { IRepositoryInterface } from '../Interfaces/IRepositotyInterface'
 import { Repository as TypeOrmRepository, SelectQueryBuilder } from 'typeorm'
+import { IRepositoryInterface } from '../../Application/Interfaces/IRepositotyInterface'
 import { DataNotFoundError } from '../../Business/Errors'
-import { IEntityDataMapperInterface } from '../Interfaces/IEntityDataMapperInterface'
+import { EntityDataMapperContract } from './EntityDataMapperContract'
 
 export abstract class TypeOrmMysqlRepositoryContract<TDomainEntity, TDaoEntity>
   implements IRepositoryInterface<TDomainEntity>
 {
   protected readonly repository: TypeOrmRepository<TDaoEntity>
-  protected readonly dataMapper: IEntityDataMapperInterface<TDomainEntity, TDaoEntity>
+  protected readonly dataMapper: EntityDataMapperContract<TDomainEntity, TDaoEntity>
 
   public constructor(
     repository: TypeOrmRepository<TDaoEntity>,
-    dataMapper: IEntityDataMapperInterface<TDomainEntity, TDaoEntity>,
+    dataMapper: EntityDataMapperContract<TDomainEntity, TDaoEntity>,
     protected dataNotFoundError?: DataNotFoundError
   ) {
     this.repository = repository

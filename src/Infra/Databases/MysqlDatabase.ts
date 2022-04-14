@@ -1,8 +1,7 @@
 import * as path from 'path'
 import { DataSource } from 'typeorm'
-import { IDatabaseInterface } from '../Interfaces/IDatabaseInterface'
 
-export class MysqlDatabase implements IDatabaseInterface {
+export class MysqlDatabase {
   private static connection: DataSource
 
   public createConnection(): void {

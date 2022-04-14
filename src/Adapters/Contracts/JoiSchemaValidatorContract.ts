@@ -1,8 +1,9 @@
 import { Schema, ValidationError } from 'joi'
+import { IValidatorInterface } from '../../Application/Interfaces/IValidatorInterface'
 import { InvalidDataError } from '../../Business/Errors'
 import { IErrorDetail } from '../../Business/Interfaces/IErrorDetail'
 
-export abstract class JoiSchemaValidatorContract {
+export abstract class JoiSchemaValidatorContract implements IValidatorInterface<any> {
   /**
    * Válida um payload com base em um Schema.
    *
@@ -30,5 +31,9 @@ export abstract class JoiSchemaValidatorContract {
         })
       )
     }
+  }
+
+  public async validateCreatePayload(data: any): Promise<void> {
+    throw new Error('Method not implemented.')
   }
 }
