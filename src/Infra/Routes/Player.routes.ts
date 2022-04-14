@@ -6,7 +6,10 @@ const playerController = new PlayerController()
 
 playerRouter.route('/:id').get(playerController.get.bind(playerController))
 
-playerRouter.route('/').post(playerController.post.bind(playerController))
+playerRouter
+  .route('/')
+  .post(playerController.post.bind(playerController))
+  .get(playerController.getAll.bind(playerController))
 
 playerRouter
   .route('/:id/assign-team/:teamId')

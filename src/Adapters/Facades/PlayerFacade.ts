@@ -1,6 +1,7 @@
 import { IPlayerCreateDto } from '../../Application/Dto/IPlayerCreateDto'
 import { PlayerAssignTeamUseCase } from '../../Application/UseCases/PlayerAssignTeamUseCase'
 import { PlayerCreateUseCase } from '../../Application/UseCases/PlayerCreateUseCase'
+import { PlayerGetListUseCase } from '../../Application/UseCases/PlayerGetListUseCase'
 import { PlayerGetUseCase } from '../../Application/UseCases/PlayerGetUseCase'
 import { PlayerRemoveTeamUseCase } from '../../Application/UseCases/PlayerRemoveTeamUseCase'
 import { TeamGetUseCase } from '../../Application/UseCases/TeamGetUseCase'
@@ -15,6 +16,14 @@ export class PlayerFacade {
     const playerGetUseCase = new PlayerGetUseCase(this.repositoryFactory.buildPlayerRepository())
 
     return playerGetUseCase.execute(id)
+  }
+
+  public async getAll(): Promise<Player[]> {
+    const playerGetListUseCase = new PlayerGetListUseCase(
+      this.repositoryFactory.buildPlayerRepository()
+    )
+
+    return playerGetListUseCase.execute()
   }
 
   public async create(payload: IPlayerCreateDto): Promise<Player> {

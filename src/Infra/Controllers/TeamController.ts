@@ -20,6 +20,19 @@ export class TeamController {
     }
   }
 
+  public async getAll(request: Request, response: Response, next: NextFunction) {
+    try {
+      const factory = new Factory(MysqlDatabase.getConnection())
+
+      const result = await factory.buildFacadeFactory().buildTeamFacade().getAll()
+
+      response.status(200).send(new TeamView().renderMany(result, false))
+    } catch (e) {
+      console.error(e)
+      next(e)
+    }
+  }
+
   public async post(request: Request, response: Response, next: NextFunction) {
     try {
       const factory = new Factory(MysqlDatabase.getConnection())
